@@ -28,8 +28,8 @@ chkconfig httpd on
 echo "Installing mysql and mysql-server"
 yum -y install mysql mysql-server
 service mysqld start
-mysqladmin -u root password dvwaPASSWOR
-echo "create database dvwa" | mysql -u root -pdvwaPASSWOR
+mysqladmin -u root password dvwaPASSWORD
+echo "create database dvwa" | mysql -u root -pdvwaPASSWORD
 
 echo "Installing PHP"
 yum -y install php php-mysql php-pear php-pear-DB
