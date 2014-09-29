@@ -21,18 +21,18 @@ service iptables stop
 chkconfig iptables off
 
 echo "Installing Apache httpd Server"
-yum -y install httpd.i686
+yum -y install httpd
 service httpd start
 chkconfig httpd on
 
 echo "Installing mysql and mysql-server"
-yum -y install mysql.i686 mysql-server
+yum -y install mysql mysql-server
 service mysqld start
 mysqladmin -u root password dvwaPASSWOR
-echo "create database dvwa" | mysql -u username -p dvwaPASSWOR
+echo "create database dvwa" | mysql -u root -pdvwaPASSWOR
 
 echo "Installing PHP"
-yum -y install php.i686 php-mysql php-pear php-pear-DB
+yum -y install php php-mysql php-pear php-pear-DB
 
 echo "Installing wget"
 yum -y install wget
@@ -41,11 +41,11 @@ echo "Installing Damn Vulnerable Web App (DVWA)"
 cd /var/www/html
 wget http://www.computersecuritystudent.com/SECURITY_TOOLS/DVWA/DVWAv107/lesson1/DVWA-1.0.7.zip
 unzip DVWA-1.0.7.zip
-rm DVWA-1.0.7.zip
+rm -f DVWA-1.0.7.zip
 cd /var/www/html/dvwa/config
 cp config.inc.php config.inc.php.BKP
 chmod 000 config.inc.php.BKP
-sed -i 's/SELINUX=enforcing/SELINUX=disabled/' /etc/selinux/config <------ password를 dvwaPASSWORD로 변경
+sed -i "s/''/'dvwaPASSWORD'/" config.inc.php
 service httpd restart
 
 echo "Installation is done"
