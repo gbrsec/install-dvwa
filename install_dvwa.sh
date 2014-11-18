@@ -34,8 +34,8 @@ echo "create database dvwa" | mysql -u root -pdvwaPASSWORD
 echo "Installing PHP"
 yum -y install php php-mysql php-pear php-pear-DB
 
-echo "Installing wget and netcat"
-yum -y install wget nc
+echo "Installing wget, netcat and unzip"
+yum -y install wget nc unzip
 
 echo "Installing Damn Vulnerable Web App (DVWA)"
 cd /var/www/html
@@ -57,13 +57,4 @@ echo "Password: password"
 echo 
 echo "For more info:"
 echo "http://www.computersecuritystudent.com/SECURITY_TOOLS/DVWA/DVWAv107/lesson1/index.html"
-
-
-
-
-
-
-
-
-
 
